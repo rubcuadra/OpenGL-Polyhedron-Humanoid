@@ -66,10 +66,13 @@ public:
         head = new Head(-60,80,-90,90);
         right_upper = new UpperLimb(-90,180,-100,10,0,90,-20,20,-10,40,-20,20);
         left_upper = new UpperLimb(-90,180,-10,100,0,90,-20,20,-10,40,-20,20);
+        
+        right_lower = new LowerLimb(-90,180,-100,10,0,90,-20,20,-10,40,-20,20);
     }
     void render()
     {
         torso->render();
+        
         glPushMatrix(); //Lo de arriba se afecta por la rotacion de hombros
             glRotatef( torso->getChestTorsion() , 0,1,0);
         
@@ -92,6 +95,11 @@ public:
         glPushMatrix(); //Lo de abajo se afecta por rotacion de cadera(Stomach)
         
             glRotatef( torso->getStomachTorsion() , 0,1,0);
+        
+            glPushMatrix();
+                glTranslatef(-0.2,-0.75,0); //Subir y pintar cabeza
+                right_lower->render();
+            glPopMatrix();
         
         glPopMatrix();
     }

@@ -108,14 +108,15 @@ void display(void)
 
     glPushMatrix();
         glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
-    
+
         //setUpPerspective();
-        //gluLookAt(0 , 1 , 1 ,0 ,0 ,0 ,0 ,1 ,0);
+        gluLookAt(0.0 , 0.0 , -2.0 ,0 ,0 ,0 ,0 ,1 ,0);
     
     glPopMatrix();
     
-    human->render();
-    
+    glPushMatrix();
+        human->render();
+    glPopMatrix();
     glutSwapBuffers();        //End
 }
 void keyDown(unsigned char key, int x, int y)

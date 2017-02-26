@@ -53,7 +53,8 @@ public:
     {
         glPushMatrix(); //Stomach
             glRotatef(torsionS,0,1,0);
-            glScalef(1,0.35,0.5);
+            glTranslatef(0,-0.1,0);
+            glScalef(0.75,0.6,0.5);
             glutSolidCube(1);
         glPopMatrix();
         
