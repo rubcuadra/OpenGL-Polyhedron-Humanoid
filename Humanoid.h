@@ -10,14 +10,19 @@
 #include "Torso.h"
 #include "Head.h"
 #include "UpperLimb.h"
+#include "LowerLimb.h"
 
 class Humanoid //Padre para personajes humanoides
 {
 protected:
     Torso *torso;
     Head *head;
-    UpperLimb *right;
-    UpperLimb *left;
+    
+    UpperLimb *right_upper;
+    UpperLimb *left_upper;
+    
+    LowerLimb *right_lower;
+    LowerLimb *left_lower;
     
 public:
     virtual void render() = 0; //Puede cambiar acomodo de objetos
@@ -30,19 +35,26 @@ public:
     bool rotateHead(float toAngle) {return head->setTorsion(toAngle);}
     //Arms
         //Right
-    bool rotateRightArm(float toAngle) {return right->rotateArm(toAngle); }
-    bool revolRightArm(float toAngle)  {return right->revArm(toAngle); }
-    bool rotRightForearm(float toAngle){return right->rotForearm(toAngle); }
-    bool torRightForearm(float toAngle){return right->torForearm(toAngle); }
-    bool rotRightHand(float toAngle){return right->rotHand(toAngle); }
-    bool torRightHand(float toAngle){return right->torHand(toAngle); }
+    bool rotateRightArm(float toAngle) {return right_upper->rotateArm(toAngle); }
+    bool revolRightArm(float toAngle)  {return right_upper->revArm(toAngle); }
+    bool rotRightForearm(float toAngle){return right_upper->rotForearm(toAngle); }
+    bool torRightForearm(float toAngle){return right_upper->torForearm(toAngle); }
+    bool rotRightHand(float toAngle){return right_upper->rotHand(toAngle); }
+    bool torRightHand(float toAngle){return right_upper->torHand(toAngle); }
         //Left
-    bool rotateLeftArm(float toAngle) {return left->rotateArm(toAngle); }
-    bool revolLeftArm(float toAngle)  {return left->revArm(toAngle); }
-    bool rotLeftForearm(float toAngle){return left->rotForearm(toAngle); }
-    bool torLeftForearm(float toAngle){return left->torForearm(toAngle); }
-    bool rotLeftHand(float toAngle){return left->rotHand(toAngle); }
-    bool torLeftHand(float toAngle){return left->torHand(toAngle); }
+    bool rotateLeftArm(float toAngle) {return left_upper->rotateArm(toAngle); }
+    bool revolLeftArm(float toAngle)  {return left_upper->revArm(toAngle); }
+    bool rotLeftForearm(float toAngle){return left_upper->rotForearm(toAngle); }
+    bool torLeftForearm(float toAngle){return left_upper->torForearm(toAngle); }
+    bool rotLeftHand(float toAngle){return left_upper->rotHand(toAngle); }
+    bool torLeftHand(float toAngle){return left_upper->torHand(toAngle); }
+    //Legs
+        //Right
+    
+    
+    
+    
+        //Left
 };
 
 class Human : public Humanoid
@@ -52,30 +64,34 @@ public:
     {
         torso = new Torso(-30,30,-20,20);
         head = new Head(-60,80,-90,90);
-        right = new UpperLimb(-90,180,-100,10,0,90,-20,20,-10,40,-20,20);
-        left = new UpperLimb(-90,180,-10,100,0,90,-20,20,-10,40,-20,20);
+        right_upper = new UpperLimb(-90,180,-100,10,0,90,-20,20,-10,40,-20,20);
+        left_upper = new UpperLimb(-90,180,-10,100,0,90,-20,20,-10,40,-20,20);
     }
     void render()
     {
+        torso->render();
         glPushMatrix(); //Lo de arriba se afecta por la rotacion de hombros
-        
-            torso->render();
             glRotatef( torso->getChestTorsion() , 0,1,0);
         
             glPushMatrix();
-                glTranslatef(0,0.95,0);
+                glTranslatef(0,0.95,0); //Subir y pintar cabeza
                 head->render();
             glPopMatrix();
         
             glPushMatrix();
-                glTranslatef(-0.7,0.2,0);
-                right->render();
+                glTranslatef(-0.7,0.2,0);   //Movernos izq y pintar brazo
+                right_upper->render();
             glPopMatrix();
         
             glPushMatrix();
-                glTranslatef(0.7,0.2,0);
-                left->render();
+                glTranslatef(0.7,0.2,0);    //Movernos der y pintar brazo
+                left_upper->render();
             glPopMatrix();
+        glPopMatrix();
+        
+        glPushMatrix(); //Lo de abajo se afecta por rotacion de cadera(Stomach)
+        
+            glRotatef( torso->getStomachTorsion() , 0,1,0);
         
         glPopMatrix();
     }
