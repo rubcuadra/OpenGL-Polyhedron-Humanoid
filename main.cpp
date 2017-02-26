@@ -158,6 +158,66 @@ void keyDown(unsigned char key, int x, int y)
         case 'Y':
             angles[5] = decreaseAngle(&Human::revolRightArm,angles[5]);
             break;
+        case 'u':
+            angles[6] = incrementAngle(&Human::rotRightForearm,angles[6]);
+            break;
+        case 'U':
+            angles[6] = decreaseAngle(&Human::rotRightForearm,angles[6]);
+            break;
+        case 'i':
+            angles[7] = incrementAngle(&Human::torRightForearm,angles[7]);
+            break;
+        case 'I':
+            angles[7] = decreaseAngle(&Human::torRightForearm,angles[7]);
+            break;
+        case 'o':
+            angles[8] = incrementAngle(&Human::rotRightHand,angles[8]);
+            break;
+        case 'O':
+            angles[8] = decreaseAngle(&Human::rotRightHand,angles[8]);
+            break;
+        case 'p':
+            angles[9] = incrementAngle(&Human::torRightHand,angles[9]);
+            break;
+        case 'P':
+            angles[9] = decreaseAngle(&Human::torRightHand,angles[9]);
+            break;
+        case 'a':
+            angles[10] = incrementAngle(&Human::rotateLeftArm,angles[10]);
+            break;
+        case 'A':
+            angles[10] = decreaseAngle(&Human::rotateLeftArm,angles[10]);
+            break;
+        case 's':
+            angles[11] = incrementAngle(&Human::revolLeftArm,angles[11]);
+            break;
+        case 'S':
+            angles[11] = decreaseAngle(&Human::revolLeftArm,angles[11]);
+            break;
+        case 'd':
+            angles[12] = incrementAngle(&Human::rotLeftForearm,angles[12]);
+            break;
+        case 'D':
+            angles[12] = decreaseAngle(&Human::rotLeftForearm,angles[12]);
+            break;
+        case 'f':
+            angles[13] = incrementAngle(&Human::torLeftForearm,angles[13]);
+            break;
+        case 'F':
+            angles[13] = decreaseAngle(&Human::torLeftForearm,angles[13]);
+            break;
+        case 'g':
+            angles[14] = incrementAngle(&Human::rotLeftHand,angles[14]);
+            break;
+        case 'G':
+            angles[14] = decreaseAngle(&Human::rotLeftHand,angles[14]);
+            break;
+        case 'h':
+            angles[15] = incrementAngle(&Human::torLeftHand,angles[15]);
+            break;
+        case 'H':
+            angles[15] = decreaseAngle(&Human::torLeftHand,angles[15]);
+            break;
             
     }
 }
