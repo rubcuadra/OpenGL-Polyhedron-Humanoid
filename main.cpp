@@ -146,6 +146,18 @@ void keyDown(unsigned char key, int x, int y)
         case 'R':
             angles[3] = decreaseAngle(&Human::rotateTorso_Stomach,angles[3]);
             break;
+        case 't':
+            angles[4] = incrementAngle(&Human::rotateRightArm,angles[4]);
+            break;
+        case 'T':
+            angles[4] = decreaseAngle(&Human::rotateRightArm,angles[4]);
+            break;
+        case 'y':
+            angles[5] = incrementAngle(&Human::revolRightArm,angles[5]);
+            break;
+        case 'Y':
+            angles[5] = decreaseAngle(&Human::revolRightArm,angles[5]);
+            break;
             
     }
 }

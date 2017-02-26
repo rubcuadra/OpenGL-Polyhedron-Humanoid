@@ -27,6 +27,11 @@ public:
     
     bool verticalRotateHead(float toAngle) {return head->setRotation(toAngle);}
     bool rotateHead(float toAngle) {return head->setTorsion(toAngle);}
+    
+    bool rotateRightArm(float toAngle){ return right->rotateArm(toAngle); }
+    bool revolRightArm(float toAngle){ return right->revArm(toAngle); }
+    
+    
 };
 
 class Human : public Humanoid
@@ -36,7 +41,7 @@ public:
     {
         torso = new Torso(-30,30,-20,20);
         head = new Head(-60,80,-90,90);
-        right = new UpperLimb(-180,180,-180,180);
+        right = new UpperLimb(-90,180,-100,10);
     }
     void render()
     {
@@ -51,7 +56,7 @@ public:
             
             
             glPushMatrix();
-                glTranslatef(0.7,0.2,0);
+                glTranslatef(-0.7,0.2,0);
                 right->render();
             glPopMatrix();
         

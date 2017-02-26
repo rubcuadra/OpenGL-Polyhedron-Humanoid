@@ -16,11 +16,13 @@ public:
     void render(void)
     {
         glPushMatrix();
-            glRotatef(rotation,1,0,0);
-            glRotatef(revolution,0,0,1);
+            glTranslatef(0,0.15,0);     //Movemos para generar el hombro
+                glRotatef(rotation,1,0,0);
+                glRotatef(revolution,0,0,1);
+            glTranslatef(0,-0.15,0);    //Regresamos para generar el brazo
         
-            glScalef(0.18,0.3,0.3);
-            glutSolidSphere(1,20,20);
+            glScalef(0.18,0.3,0.3);     //Escalamos
+            glutSolidSphere(1,20,20);   //Dibujamos
         
         glPopMatrix();
     }
@@ -46,6 +48,9 @@ private:
     Forearm *forearm;
 
 public:
+    bool rotateArm(float toAngle) {return arm->setRotation(toAngle);}
+    bool revArm(float toAngle) {return arm->setRevolution(toAngle);}
+    
     UpperLimb(float minRotArm,float maxRotArm,float minRevArm,float maxRevArm)
     {
         arm = new Arm(minRotArm,maxRotArm,minRevArm,maxRevArm);
