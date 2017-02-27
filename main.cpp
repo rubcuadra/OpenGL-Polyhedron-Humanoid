@@ -70,9 +70,6 @@ void init(void)
     glClearColor (0.0, 0.0, 0.0, 0.0); //Negro
     
     //Inits
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    
     glShadeModel (GL_SMOOTH);
     glEnable(GL_LIGHTING);
     glEnable(GL_DEPTH_TEST);
@@ -110,7 +107,7 @@ void display(void)
         glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
 
         //setUpPerspective();
-        gluLookAt(0.0 , 0.0 , -2.0 ,0 ,0 ,0 ,0 ,1 ,0);
+        //gluLookAt(0.0 , 0.0 , -2.0 ,0 ,0 ,0 ,0 ,1 ,0);
     
     glPopMatrix();
     
@@ -219,6 +216,18 @@ void keyDown(unsigned char key, int x, int y)
         case 'H':
             angles[15] = decreaseAngle(&Human::torLeftHand,angles[15]);
             break;
+        case 'j':
+            angles[16] = incrementAngle(&Human::revolRightThigh,angles[16]);
+            break;
+        case 'J':
+            angles[16] = decreaseAngle(&Human::revolRightThigh,angles[16]);
+            break;
+        case 'k':
+            angles[17] = incrementAngle(&Human::rotateRightThigh,angles[17]);
+            break;
+        case 'K':
+            angles[17] = decreaseAngle(&Human::rotateRightThigh,angles[17]);
+            break;
             
     }
 }
@@ -228,6 +237,7 @@ void reshape(int w, int h)
     screenWidth = w;
     screenHeight = h;
     glViewport (0, 0, (GLsizei) w, (GLsizei) h);
+    //setUpPerspective();
 }
 
 int main(int argc, char** argv)

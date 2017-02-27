@@ -8,28 +8,25 @@
 
 #pragma once
 
-class Thigh : Part //Entre cadera y rodilla
+class Thigh : public Part //Entre cadera y rodilla
 {
 public:
     Thigh(float minRotation, float maxRotation,float minRevolution,float maxRevolution):Part(minRotation,maxRotation,0,0,minRevolution,maxRevolution){}
     void render()
     {
         
-        glTranslatef(0,0.15,0);     //Movemos para generar el hombro
+        glTranslatef(0,0.45,0);     //Movemos para generar la articulacion
             glRotatef(rotation,1,0,0);
             glRotatef(revolution,0,0,1);
-        glTranslatef(0,-0.15,0);    //Regresamos para generar el brazo
+        glTranslatef(0,-0.45,0);    //Regresamos para generar el muslo
         
-        glPushMatrix();
-            glScalef(0.18,0.3,0.22);     //Escalamos
-            glutSolidSphere(1,20,20);   //Dibujamos
-            glPopMatrix();
-        glTranslatef(0,-0.2,0);     //Aqui estamos en el codo
-        
-        glPushMatrix();                 //Aqui va lo del muslo
+        glPushMatrix();             //Pintamos el musculo
             glScalef(0.1,0.3,0.1);
-            glutWireDodecahedron();
+            glutSolidDodecahedron();
         glPopMatrix();
+        
+        glTranslatef(0,-0.5,0);
+        glutWireSphere(0.2,20, 20); //Nos deja en la rodilla
     }
 };
 
@@ -56,6 +53,9 @@ public:
     {
         thigh = new Thigh(minRotThigh,maxRotThigh,minRevThigh,maxRevThigh);
     }
+    
+    bool rotateThigh(float toAngle) {return thigh->setRotation(toAngle);}
+    bool revThigh(float toAngle) { return thigh->setRevolution(toAngle); }
     
     void render()
     {

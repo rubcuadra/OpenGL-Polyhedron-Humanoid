@@ -50,6 +50,8 @@ public:
     bool torLeftHand(float toAngle){return left_upper->torHand(toAngle); }
     //Legs
         //Right
+    bool rotateRightThigh(float toAngle) {return right_lower->rotateThigh(toAngle); }
+    bool revolRightThigh(float toAngle)  {return right_lower->revThigh(toAngle); }
     
     
     
@@ -67,7 +69,7 @@ public:
         right_upper = new UpperLimb(-90,180,-100,10,0,90,-20,20,-10,40,-20,20);
         left_upper = new UpperLimb(-90,180,-10,100,0,90,-20,20,-10,40,-20,20);
         
-        right_lower = new LowerLimb(-90,180,-100,10,0,90,-20,20,-10,40,-20,20);
+        right_lower = new LowerLimb(-45,90,-60,10,0,90,-20,20,-10,40,-20,20);
     }
     void render()
     {
