@@ -17,6 +17,9 @@
     #include <GL/glut.h>
 #endif
 
+//TODO: Arreglar la camara
+//      Agregar Colores Sweater,Pantalon,Piel
+//      Dividir el Switch?
 
 float screenWidth=1000,screenHeight=1000;
 
