@@ -26,16 +26,39 @@ public:
         glPopMatrix();
         
         glTranslatef(0,-0.5,0);
-        glutWireSphere(0.2,20, 20); //Nos deja en la rodilla
     }
 };
 
-class Calf //Entre rodilla y tobillo
+class Calf : public Part    //Entre rodilla y tobillo, solo tiene el movimiento de la rodilla
 {
+public:
+    Calf(float minRotation,float maxRotation):Part(minRotation,maxRotation,0,0,0,0){}
+    void render()
+    {
+        glRotatef(rotation,1,0,0);
+        
+        glTranslatef(0, -0.2, 0);
+        glPushMatrix();             //Pintamos el musculo
+            glScalef(0.1,0.4,0.2);
+            glutSolidIcosahedron();
+        glPopMatrix();
+        
+        glTranslatef(0,-0.35,0); //Nos vamos al pie
+    }
 
 };
-class Foot //Pie
+class Foot : public Part //Pie
 {
+public:
+    Foot(float minRotation,float maxRotation,float minTorsion,float maxTorsion):Part(minRotation,maxRotation,minTorsion,maxTorsion,0,0){}
+    
+    void render()
+    {
+        glRotatef(180,1,0,0); //Para que salga viendo hacia nosotros
+        glRotatef(rotation,1,0,0);
+        glRotatef(torsion,0,1,0);
+        glutSolidCone(0.05,0.3,20, 20);
+    }
     
 };
 
@@ -48,17 +71,30 @@ private:
     
 public:
     LowerLimb(float minRotThigh,float maxRotThigh,float minRevThigh,float maxRevThigh,
-              float minForeRotation,float maxForeRotation, float minForeTor,float maxForeTor,
-              float minHandRotation, float maxHandRotation, float minHandTor, float maxHandTor)
+              float minCalfRotation,float maxCalfRotation,
+              float minFootRotation, float maxFootRotation, float minFootTor, float maxFootTor)
     {
         thigh = new Thigh(minRotThigh,maxRotThigh,minRevThigh,maxRevThigh);
+        calf = new Calf(minCalfRotation,maxCalfRotation);
+        foot = new Foot(minFootRotation,maxFootRotation,minFootTor,maxFootTor);
     }
     
     bool rotateThigh(float toAngle) {return thigh->setRotation(toAngle);}
     bool revThigh(float toAngle) { return thigh->setRevolution(toAngle); }
     
+    bool rotateCalf(float toAngle) {return calf->setRotation(toAngle);}
+    
+    bool rotateFoot(float toAngle) {return foot->setRotation(toAngle);}
+    bool torsionFoot(float toAngle) {return foot->setTorsion(toAngle);}
+    
+    
+    
     void render()
     {
-        thigh->render();
+        glPushMatrix();
+            thigh->render();
+            calf->render();
+            foot->render();
+        glPopMatrix();
     }
 };

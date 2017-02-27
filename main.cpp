@@ -114,6 +114,7 @@ void display(void)
     glPushMatrix();
         human->render();
     glPopMatrix();
+    
     glutSwapBuffers();        //End
 }
 void keyDown(unsigned char key, int x, int y)
@@ -216,6 +217,7 @@ void keyDown(unsigned char key, int x, int y)
         case 'H':
             angles[15] = decreaseAngle(&Human::torLeftHand,angles[15]);
             break;
+            
         case 'j':
             angles[16] = incrementAngle(&Human::revolRightThigh,angles[16]);
             break;
@@ -228,7 +230,54 @@ void keyDown(unsigned char key, int x, int y)
         case 'K':
             angles[17] = decreaseAngle(&Human::rotateRightThigh,angles[17]);
             break;
-            
+        case 'l':
+            angles[18] = incrementAngle(&Human::rotRightCalf,angles[18]);
+            break;
+        case 'L':
+            angles[18] = decreaseAngle(&Human::rotRightCalf,angles[18]);
+            break;
+        case 'z':
+            angles[19] = incrementAngle(&Human::rotateRightFoot,angles[19]);
+            break;
+        case 'Z':
+            angles[19] = decreaseAngle(&Human::rotateRightFoot,angles[19]);
+            break;
+        case 'x':
+            angles[20] = incrementAngle(&Human::torRightFoot,angles[20]);
+            break;
+        case 'X':
+            angles[20] = decreaseAngle(&Human::torRightFoot,angles[20]);
+            break;
+        case 'c':
+            angles[21] = incrementAngle(&Human::revolLeftThigh,angles[21]);
+            break;
+        case 'C':
+            angles[21] = decreaseAngle(&Human::revolLeftThigh,angles[21]);
+            break;
+        case 'v':
+            angles[22] = incrementAngle(&Human::rotateLeftThigh,angles[22]);
+            break;
+        case 'V':
+            angles[22] = decreaseAngle(&Human::rotateLeftThigh,angles[22]);
+            break;
+        case 'b':
+            angles[23] = incrementAngle(&Human::rotLeftCalf,angles[23]);
+            break;
+        case 'B':
+            angles[23] = decreaseAngle(&Human::rotLeftCalf,angles[23]);
+            break;
+        case 'n':
+            angles[24] = incrementAngle(&Human::rotateLeftFoot,angles[24]);
+            break;
+        case 'N':
+            angles[24] = decreaseAngle(&Human::rotateLeftFoot,angles[24]);
+            break;
+        case 'm':
+            angles[25] = incrementAngle(&Human::torLeftFoot,angles[25]);
+            break;
+        case 'M':
+            angles[25] = decreaseAngle(&Human::torLeftFoot,angles[25]);
+            break;
     }
 }
 
