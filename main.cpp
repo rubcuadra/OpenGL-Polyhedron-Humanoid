@@ -121,7 +121,6 @@ void display(void)
 }
 void uppercaseKeyDown(unsigned char key)
 {
-    std::cout<<"UPPER"<<key<<"\n";
     switch (key)
     {
         case 'Q':
@@ -202,12 +201,12 @@ void uppercaseKeyDown(unsigned char key)
         case 'M':
             angles[25] = decreaseAngle(&Human::torLeftFoot,angles[25]);
             break;
-        case 27:   //Ctrl c
+        case 27:   //Escape
             exit(0);
             break;
     }
 }
-void lowerKeyDown(unsigned char key)
+void lowercaseKeyDown(unsigned char key)
 {
     switch (key)
     {
@@ -295,10 +294,9 @@ void lowerKeyDown(unsigned char key)
 void keyDown(unsigned char key, int x, int y)
 {
     if ( key>90)
-        lowerKeyDown(key);
+        lowercaseKeyDown(key);
     else
         uppercaseKeyDown(key);
-    
 }
 
 void reshape(int w, int h)

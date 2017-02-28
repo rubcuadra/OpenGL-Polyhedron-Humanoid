@@ -74,8 +74,10 @@ public:
     {
         torso = new Torso(-30,30,-20,20);
         head = new Head(-60,80,-90,90);
+        
         right_upper = new UpperLimb(-90,180,-100,10,0,90,-20,20,-10,40,-20,20);
         left_upper = new UpperLimb(-90,180,-10,100,0,90,-20,20,-10,40,-20,20);
+        
         right_lower = new LowerLimb(-45,90,-60,10, -90,0, -20,40, -45,45);
         left_lower = new LowerLimb(-45,90,-10,60, -90,0, -20,40, -45,45);
         //Colores de piel
