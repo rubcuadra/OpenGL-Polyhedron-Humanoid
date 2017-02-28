@@ -97,9 +97,10 @@ void setUpPerspective() //Inicializar perspectiva
     glLoadIdentity();
     //70 veces en x por cada y (Lo que se ve)
     //aspecto -> tamaño de pantalla ; zNear y far son los planos
-    gluPerspective(40.0f, (float)screenWidth / (float)screenHeight, 1,20);
+    gluPerspective(40.0f, (float)screenWidth / (float)screenHeight, 1,100);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+    gluLookAt(0.0 , 0.0 , -6.0 ,0 ,0 ,0 ,0 ,1 ,0);
 }
 
 void display(void)
@@ -110,8 +111,6 @@ void display(void)
         glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
 
         //setUpPerspective();
-        //gluLookAt(0.0 , 0.0 , -2.0 ,0 ,0 ,0 ,0 ,1 ,0);
-    
     glPopMatrix();
     
     glPushMatrix();
@@ -289,7 +288,7 @@ void reshape(int w, int h)
     screenWidth = w;
     screenHeight = h;
     glViewport (0, 0, (GLsizei) w, (GLsizei) h);
-    //setUpPerspective();
+    setUpPerspective();
 }
 
 int main(int argc, char** argv)

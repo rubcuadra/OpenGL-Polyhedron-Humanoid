@@ -21,7 +21,7 @@ public:
         glTranslatef(0,-0.45,0);    //Regresamos para generar el muslo
         
         glPushMatrix();             //Pintamos el musculo
-            glScalef(0.1,0.3,0.1);
+            glScalef(0.12,0.3,0.1);
             glutSolidDodecahedron();
         glPopMatrix();
         
@@ -38,8 +38,8 @@ public:
         glRotatef(rotation,1,0,0);
         
         glTranslatef(0, -0.2, 0);
-        glPushMatrix();             //Pintamos el musculo
-            glScalef(0.1,0.4,0.2);
+        glPushMatrix();             //Pintamos pantorrilla
+            glScalef(0.12,0.4,0.2);
             glutSolidIcosahedron();
         glPopMatrix();
         
@@ -57,7 +57,7 @@ public:
         glRotatef(180,1,0,0); //Para que salga viendo hacia nosotros
         glRotatef(rotation,1,0,0);
         glRotatef(torsion,0,1,0);
-        glutSolidCone(0.05,0.3,20, 20);
+        glutSolidCone(0.07,0.35,20, 20);
     }
     
 };
