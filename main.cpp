@@ -25,10 +25,10 @@ float screenWidth=1000,screenHeight=1000;
 
 //Material
 GLfloat matSpecular[] = { 0.3, 0.3, 0.3, 1.0 }; //Color Charolazo(Blanco)
-GLfloat matAmbience[] = { 0.3, 0.3, 0.3, 1.0 }; //Color del planeta
+GLfloat matAmbience[] = { 0.3, 0.3, 0.3, 1.0 }; //Color del material
 GLfloat matShininess[] = { 10.0 };              //Charolazo
 //Luces
-GLfloat lightAmbient[] = { 1.0, 1.0, 1.0, 0.5 }; //Ambiente
+GLfloat lightAmbient[] = { 1.0, 0.6, 0.6, 0.5 }; //Ambiente rojiza
 GLfloat lightDiffuse[] = { 1.0, 1.0, 1.0, 1.0 }; //Difusa
 GLfloat lightSpecular[] = { 1.0, 1.0, 1.0, 1.0 }; //Specular blanca
 GLfloat lightPosition[] = { -1.0, 5.0, 5.0, 1.0 }; //Position
