@@ -14,12 +14,19 @@ protected:
     float minRotation,maxRotation;
     float minRevolution,maxRevolution;
     float torsion,rotation,revolution; //Angles
-    
+    GLfloat *matColor;
     Part(float minRot, float maxRot,float minT,float maxT,float minRev, float maxRev):
     minTorsion(minT),maxTorsion(maxT),
     minRotation(minRot),maxRotation(maxRot),
     minRevolution(minRev),maxRevolution(maxRev),
-    torsion(0),rotation(0),revolution(0){}//Constructor
+    torsion(0),rotation(0),revolution(0)
+    {
+        matColor = new GLfloat[4];
+        matColor[0] = 0.3;
+        matColor[1] = 0.3;
+        matColor[2] = 0.3;
+        matColor[3] = 1.0;
+    }//Constructor
     
 public:
     bool setRotation(float rotation)
@@ -57,5 +64,16 @@ public:
     float getRotation(){return rotation;}
     float getRevolution(){return revolution;}
     
+    void setMaterialColor(float r,float g,float b)
+    {
+        matColor[0] = r;
+        matColor[1]=g;
+        matColor[2]=b;
+    }
+    
+    float getRed(){return matColor[0];}
+    float getBlue(){return matColor[1];}
+    float getGreen(){return matColor[2];}
+  
     virtual void render() = 0;
 };

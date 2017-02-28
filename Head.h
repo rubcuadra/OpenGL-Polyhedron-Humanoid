@@ -20,6 +20,7 @@ public:
 
     void render(void)
     {
+        glMaterialfv(GL_FRONT, GL_AMBIENT, matColor);
         glPushMatrix();
             glRotatef(torsion,0,1,0);
             glRotatef(rotation,1,0,0);

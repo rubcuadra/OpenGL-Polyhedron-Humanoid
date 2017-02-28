@@ -20,10 +20,17 @@ private:
     float minTorsionChest,maxTorsionChest;
     float minTorsionStomach,maxTorsionStomach;
     float torsionC, torsionS;
-    
+    GLfloat *matColor;
 public:
     Torso(float minChest,float maxChest,float minStomach, float maxStomach)
-    : minTorsionChest(minChest),maxTorsionChest(maxChest),minTorsionStomach(minStomach),maxTorsionStomach(maxStomach),torsionC(0),torsionS(0){}
+    : minTorsionChest(minChest),maxTorsionChest(maxChest),minTorsionStomach(minStomach),maxTorsionStomach(maxStomach),torsionC(0),torsionS(0)
+    {
+        matColor = new GLfloat[4];
+        matColor[0] = 0.3;
+        matColor[1] = 0.3;
+        matColor[2] = 0.3;
+        matColor[3] = 1.0;
+    }
     
     bool setChestTorsion(float torsion)
     {
@@ -48,9 +55,18 @@ public:
     
     float getChestTorsion(){return torsionC;}
     float getStomachTorsion(){return torsionS;}
-    
+    void setMaterialColor(float r,float g,float b)
+    {
+        matColor[0] = r;
+        matColor[1]=g;
+        matColor[2]=b;
+    }
+    float getRed(){return matColor[0];}
+    float getBlue(){return matColor[1];}
+    float getGreen(){return matColor[2];}
     void render(void)
     {
+        glMaterialfv(GL_FRONT, GL_AMBIENT, matColor);
         glPushMatrix(); //Stomach
             glRotatef(torsionS,0,1,0);
             glTranslatef(0,-0.1,0);

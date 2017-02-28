@@ -15,6 +15,7 @@ public:
     void render()
     {
         
+        glMaterialfv(GL_FRONT, GL_AMBIENT, matColor);
         glTranslatef(0,0.45,0);     //Movemos para generar la articulacion
             glRotatef(rotation,1,0,0);
             glRotatef(revolution,0,0,1);
@@ -35,8 +36,8 @@ public:
     Calf(float minRotation,float maxRotation):Part(minRotation,maxRotation,0,0,0,0){}
     void render()
     {
+        glMaterialfv(GL_FRONT, GL_AMBIENT, matColor);
         glRotatef(rotation,1,0,0);
-        
         glTranslatef(0, -0.2, 0);
         glPushMatrix();             //Pintamos pantorrilla
             glScalef(0.12,0.4,0.2);
@@ -54,6 +55,7 @@ public:
     
     void render()
     {
+        glMaterialfv(GL_FRONT, GL_AMBIENT, matColor);
         glRotatef(180,1,0,0); //Para que salga viendo hacia nosotros
         glRotatef(rotation,1,0,0);
         glRotatef(torsion,0,1,0);
@@ -87,7 +89,9 @@ public:
     bool rotateFoot(float toAngle) {return foot->setRotation(toAngle);}
     bool torsionFoot(float toAngle) {return foot->setTorsion(toAngle);}
     
-    
+    void setThighColor(float r,float g,float b){ thigh->setMaterialColor(r,g,b); }
+    void setCalfColor(float r,float g,float b) { calf->setMaterialColor(r,g,b);}
+    void setFootColor(float r,float g,float b) { foot->setMaterialColor(r,g,b);}
     
     void render()
     {

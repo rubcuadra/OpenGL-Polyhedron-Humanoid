@@ -76,9 +76,29 @@ public:
         head = new Head(-60,80,-90,90);
         right_upper = new UpperLimb(-90,180,-100,10,0,90,-20,20,-10,40,-20,20);
         left_upper = new UpperLimb(-90,180,-10,100,0,90,-20,20,-10,40,-20,20);
-        
         right_lower = new LowerLimb(-45,90,-60,10, -90,0, -20,40, -45,45);
         left_lower = new LowerLimb(-45,90,-10,60, -90,0, -20,40, -45,45);
+        //Colores de piel
+        float sk_r = 0.949019608;
+        float sk_g = 0.862745098;
+        float sk_b = 0.662745098;
+        //Red sweater
+        torso->setMaterialColor(1,0,0);
+        right_upper->setarmColor(1,0,0);
+        right_upper->setForearmColor(1,0,0);
+        left_upper->setarmColor(1,0,0);
+        left_upper->setForearmColor(1,0,0);
+        //Blue Jeans
+        right_lower->setThighColor(0,0,1);
+        right_lower->setCalfColor(0,0,1);
+        left_lower->setThighColor(0,0,1);
+        left_lower->setCalfColor(0,0,1);
+        //Hands/Head/Feet
+        head->setMaterialColor(sk_r, sk_g, sk_b);
+        left_upper->setHandColor(sk_r, sk_g, sk_b);
+        right_upper->setHandColor(sk_r, sk_g, sk_b);
+        left_lower->setFootColor(sk_r, sk_g, sk_b);
+        right_lower->setFootColor(sk_r, sk_g, sk_b);
     }
     void render()
     {

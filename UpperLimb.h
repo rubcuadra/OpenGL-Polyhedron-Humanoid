@@ -15,6 +15,7 @@ public:
     
     void render()
     {
+        glMaterialfv(GL_FRONT, GL_AMBIENT, matColor);
         glTranslatef(0,0.15,0);     //Movemos para generar el hombro
         glRotatef(rotation,1,0,0);
         glRotatef(revolution,0,0,1);
@@ -35,6 +36,7 @@ public:
     
     void render()
     {
+        glMaterialfv(GL_FRONT, GL_AMBIENT, matColor);
         glRotatef(rotation,1,0,0);
         glRotatef(torsion,0,1,0);
         
@@ -56,6 +58,7 @@ public:
     
     void render()
     {
+        glMaterialfv(GL_FRONT, GL_AMBIENT, matColor);
         glRotatef(rotation,1,0,0);
         glRotatef(torsion,0,1,0);
         
@@ -84,6 +87,10 @@ public:
     
     bool rotHand(float toAngle){return hand->setRotation(toAngle); }
     bool torHand(float toAngle){return hand->setTorsion(toAngle); }
+    
+    void setHandColor(float r,float g,float b){ hand->setMaterialColor(r,g,b); }
+    void setForearmColor(float r,float g,float b) { forearm->setMaterialColor(r,g,b);}
+    void setarmColor(float r,float g,float b) { arm->setMaterialColor(r,g,b);}
     
     UpperLimb(float minRotArm,float maxRotArm,float minRevArm,float maxRevArm,
               float minForeRotation,float maxForeRotation, float minForeTor,float maxForeTor,
